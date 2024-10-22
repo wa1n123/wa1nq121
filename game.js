@@ -259,8 +259,8 @@ const UI = {
     switch (state.curr) {
       case state.getReady:
         this.y = parseFloat(scrn.height - this.getReady.sprite.height) / 1.8;
-        this.x = parseFloat(scrn.width - this.getReady.sprite.width) / 6;
-        this.tx = parseFloat(scrn.width - this.tap[0].sprite.width) / 3.4;
+        this.x = parseFloat(scrn.width - this.getReady.sprite.width) / 4;
+        this.tx = parseFloat(scrn.width - this.tap[0].sprite.width) / 3;
         this.ty =
           this.y + this.getReady.sprite.height - this.tap[0].sprite.height;
         sctx.drawImage(this.getReady.sprite, this.x, this.y);
@@ -299,13 +299,13 @@ const UI = {
           );
           localStorage.setItem("best", this.score.best);
           let bs = `BEST  :${this.score.best}`;
-          sctx.fillText(sc, scrn.width / 2 - 80, scrn.height / 2 + 0);
-          sctx.strokeText(sc, scrn.width / 2 - 80, scrn.height / 2 + 0);
-          sctx.fillText(bs, scrn.width / 2 - 80, scrn.height / 2 + 30);
-          sctx.strokeText(bs, scrn.width / 2 - 80, scrn.height / 2 + 30);
+          sctx.fillText(sc, scrn.width / 2.1 - 80, scrn.height / 2 + 0);
+          sctx.strokeText(sc, scrn.width / 2.1 - 80, scrn.height / 2 + 0);
+          sctx.fillText(bs, scrn.width / 2.1 - 80, scrn.height / 2 + 30);
+          sctx.strokeText(bs, scrn.width / 2.1 - 80, scrn.height / 2 + 30);
         } catch (e) {
-          sctx.fillText(sc, scrn.width / 2 - 85, scrn.height / 2 + 15);
-          sctx.strokeText(sc, scrn.width / 2 - 85, scrn.height / 2 + 15);
+          sctx.fillText(sc, scrn.width / 2.1 - 85, scrn.height / 2 + 15);
+          sctx.strokeText(sc, scrn.width / 2.1 - 85, scrn.height / 2 + 15);
         }
 
         break;
@@ -359,5 +359,7 @@ function draw() {
   gnd.draw();
   UI.draw();
 }
+
+setInterval(gameLoop, 20);
 
 setInterval(gameLoop, 20);
