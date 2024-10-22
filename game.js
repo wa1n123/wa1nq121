@@ -27,7 +27,7 @@ resizeCanvas();
 
 // Добавляем обработчик события для изменения размера окна
 window.addEventListener('resize', resizeCanvas);
-scrn.tabIndex = 2;
+scrn.tabIndex = 1;
 scrn.addEventListener("click", () => {
   switch (state.curr) {
     case state.getReady:
@@ -72,7 +72,7 @@ scrn.onkeydown = function keyDown(e) {
 };
 
 let frames = 0;
-let dx = 2.22;
+let dx = 2.15;
 const state = {
   curr: 0,
   getReady: 0,
