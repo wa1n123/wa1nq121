@@ -72,7 +72,7 @@ scrn.onkeydown = function keyDown(e) {
 };
 
 let frames = 0;
-let dx = 2.15;
+let dx = 2;
 const state = {
   curr: 0,
   getReady: 0,
