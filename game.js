@@ -27,7 +27,7 @@ resizeCanvas();
 
 // Добавляем обработчик события для изменения размера окна
 window.addEventListener('resize', resizeCanvas);
-scrn.tabIndex = 1;
+scrn.tabIndex = 2;
 scrn.addEventListener("click", () => {
   switch (state.curr) {
     case state.getReady:
@@ -113,7 +113,7 @@ const bg = {
 const pipe = {
   top: { sprite: new Image() },
   bot: { sprite: new Image() },
-  gap: 65,
+  gap: 75,
   moved: true,
   pipes: [],
   draw: function () {
@@ -359,7 +359,5 @@ function draw() {
   gnd.draw();
   UI.draw();
 }
-
-setInterval(gameLoop, 20);
 
 setInterval(gameLoop, 20);
