@@ -27,7 +27,7 @@ resizeCanvas();
 
 // Добавляем обработчик события для изменения размера окна
 window.addEventListener('resize', resizeCanvas);
-scrn.tabIndex = 1;
+scrn.tabIndex = 2;
 scrn.addEventListener("click", () => {
   switch (state.curr) {
     case state.getReady:
@@ -72,7 +72,7 @@ scrn.onkeydown = function keyDown(e) {
 };
 
 let frames = 0;
-let dx = 2;
+let dx = 3;
 const state = {
   curr: 0,
   getReady: 0,
@@ -157,7 +157,7 @@ const bird = {
   y: 100,
   speed: 0,
   gravity: 0.125,
-  thrust: 3.6,
+  thrust: 3.9,
   frame: 0,
   draw: function () {
     let h = this.animations[this.frame].sprite.height;
@@ -258,9 +258,9 @@ const UI = {
   draw: function () {
     switch (state.curr) {
       case state.getReady:
-        this.y = parseFloat(scrn.height - this.getReady.sprite.height) / 2;
-        this.x = parseFloat(scrn.width - this.getReady.sprite.width) / 2;
-        this.tx = parseFloat(scrn.width - this.tap[0].sprite.width) / 2;
+        this.y = parseFloat(scrn.height - this.getReady.sprite.height) / 1.5;
+        this.x = parseFloat(scrn.width - this.getReady.sprite.width) / 9;
+        this.tx = parseFloat(scrn.width - this.tap[0].sprite.width) / 4;
         this.ty =
           this.y + this.getReady.sprite.height - this.tap[0].sprite.height;
         sctx.drawImage(this.getReady.sprite, this.x, this.y);
@@ -268,7 +268,7 @@ const UI = {
         break;
       case state.gameOver:
         this.y = parseFloat(scrn.height - this.gameOver.sprite.height) / 2.7;
-        this.x = parseFloat(scrn.width - this.gameOver.sprite.width) / 2;
+        this.x = parseFloat(scrn.width - this.gameOver.sprite.width) / 100;
         this.tx = parseFloat(scrn.width - this.tap[0].sprite.width) / 0;
         this.ty =
           this.y + this.gameOver.sprite.height - this.tap[0].sprite.height;
@@ -285,27 +285,27 @@ const UI = {
       case state.Play:
         sctx.lineWidth = "2";
         sctx.font = "35px Squada One";
-        sctx.fillText(this.score.curr, scrn.width / 2 - 5, 50);
-        sctx.strokeText(this.score.curr, scrn.width / 2 - 5, 50);
+        sctx.fillText(this.score.curr, scrn.width / 3 - 5, 50);
+        sctx.strokeText(this.score.curr, scrn.width / 3 - 5, 50);
         break;
       case state.gameOver:
         sctx.lineWidth = "2";
         sctx.font = "40px Squada One";
-        let sc = `SCORE :     ${this.score.curr}`;
+        let sc = `SCORE :${this.score.curr}`;
         try {
           this.score.best = Math.max(
             this.score.curr,
             localStorage.getItem("best")
           );
           localStorage.setItem("best", this.score.best);
-          let bs = `BEST  :     ${this.score.best}`;
-          sctx.fillText(sc, scrn.width / 2 - 80, scrn.height / 2 + 0);
-          sctx.strokeText(sc, scrn.width / 2 - 80, scrn.height / 2 + 0);
-          sctx.fillText(bs, scrn.width / 2 - 80, scrn.height / 2 + 30);
-          sctx.strokeText(bs, scrn.width / 2 - 80, scrn.height / 2 + 30);
+          let bs = `BEST  :${this.score.best}`;
+          sctx.fillText(sc, scrn.width / 2.5 - 80, scrn.height / 2 + 0);
+          sctx.strokeText(sc, scrn.width / 2.5 - 80, scrn.height / 2 + 0);
+          sctx.fillText(bs, scrn.width / 2.5 - 80, scrn.height / 2 + 30);
+          sctx.strokeText(bs, scrn.width / 2.5 - 80, scrn.height / 2 + 30);
         } catch (e) {
-          sctx.fillText(sc, scrn.width / 2 - 85, scrn.height / 2 + 15);
-          sctx.strokeText(sc, scrn.width / 2 - 85, scrn.height / 2 + 15);
+          sctx.fillText(sc, scrn.width / 2.5 - 85, scrn.height / 2 + 15);
+          sctx.strokeText(sc, scrn.width / 2.5 - 85, scrn.height / 2 + 15);
         }
 
         break;
